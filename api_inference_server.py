@@ -1,7 +1,7 @@
 
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoConfig
 from Conversation.conversation import character_msg_constructor
-from transformers import pipeline
+# from transformers import pipeline
 from pysentimiento import create_analyzer
 
 ### --- websocket server setup
@@ -10,26 +10,6 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 import config
-
-def get_text_model(pretrained_name, device):
-
-    
-    model = pipeline("text-generation", model=pretrained_name, device=device, max_length=100)
-    # , torch_dtype="auto"
-    
-    # tokenizer = AutoTokenizer.from_pretrained("openthaigpt/openthaigpt-1.0.0-7b-chat", cache_dir=None)
-    # model = AutoModelForCausalLM.from_pretrained("openthaigpt/openthaigpt-1.0.0-7b-chat")
-
-    # tokenizer = AutoTokenizer.from_pretrained("flax-community/gpt2-base-thai")
-    # model = AutoModelForCausalLM.from_pretrained("flax-community/gpt2-base-thai")
-
-    # pretrained_name = "flax-community/gpt2-base-thai"
-    # model = pipeline(
-    #     "text-generation",
-    #     model=pretrained_name,
-    #     tokenizer=pretrained_name
-    # ) 
-    return model
 
 # use fast api instead
 app = FastAPI()
